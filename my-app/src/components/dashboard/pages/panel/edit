@@ -1,0 +1,125 @@
+/*import React, { useContext, useEffect, useState } from "react";
+import FetchTransaction from "./Transaction/FetchTransaction";
+import Creation from "./Transaction/Creation";
+import Navbar from "../../components/Navbar";
+import { Box } from "@mui/material";
+import Sidebar from "../../components/Sidebar";
+import { AuthContext } from "../../../../AuthContext";
+
+const Transaction = () => {
+  const [isSideBarOpen, setSideBarOpen] = useState(true);
+  const [totalIncome, setTotalIncome] = useState(0);
+  const [totalExpenses, setTotalExpenses] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const { userId } = useContext(AuthContext);
+
+  useEffect(() => {
+    // Fetch total income from backend when component mounts
+    const fetchTotalIncome = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/total-income/${userId}`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch total income");
+        }
+
+        const data = await response.json();
+        setTotalIncome(data.total_income);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    const fetchTotalExpense = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/total-expenses/${userId}`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch total expenses");
+        }
+
+        const data = await response.json();
+
+        // Ensure data is available and correctly set
+        if (data.total_expense !== undefined) {
+          setTotalExpenses(data.total_expense);
+        } else {
+          throw new Error("total_expense not found in response");
+        }
+
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+    fetchTotalIncome();
+    fetchTotalExpense();
+  }, [userId]);
+
+  const toggleSideBar = () => {
+    setSideBarOpen(!isSideBarOpen);
+  };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p className="text-red-500">{error}</p>;
+  }
+
+  return (
+    <div>
+      <Navbar toggleSideBar={toggleSideBar} />
+      <Box sx={{ display: "flex" }}>
+        <Box
+          sx={{
+            width: isSideBarOpen ? 240 : 0,
+            transition: "width 0.3s",
+            overflow: "hidden",
+          }}
+        >
+          <Sidebar isSideBarOpen={isSideBarOpen} />
+        </Box>
+        <Box sx={{ flexGrow: 1, p: 3, overflow: "hidden" }}>
+          <div className="transactions mt-5 gap-5">
+            <div className="transactions-header">
+              <div className="header-box">
+                <h1 className="header-box-title">Transanctions History</h1>
+                <p className="header-box-subtext">
+                  See your transacions details!
+                </p>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <div className="transactions-account">
+                <div className="transactions-account-balance">
+                  <p className="text-14">Total Incomes</p>
+                  <p className="text-24 text-center font-bold">
+                    ${totalIncome}
+                  </p>
+                </div>
+                <div className="transactions-account-balance">
+                  <p className="text-14">Total Expenses</p>
+                  <p className="text-24 text-center font-bold">
+                    ${totalExpenses.toFixed(2)}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <FetchTransaction />
+          <Creation />
+        </Box>
+      </Box>
+    </div>
+  );
+};
+
+export default Transaction;*/

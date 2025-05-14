@@ -13,7 +13,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Configuration for MongoDB
-app.config['MONGO_URI'] = "mongodb+srv://easy:2HEFdz38sbSGzJZO@cluster0.air5j95.mongodb.net/finance?retryWrites=true&w=majority"
+app.config['MONGO_URI'] = "mongodb link"
 mongo = PyMongo(app)
 
 # Route to insert a new user

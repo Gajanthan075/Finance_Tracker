@@ -24,7 +24,7 @@ Take control of your money with Financio – a modern and user-friendly financia
 🛠️ Tech Stack
 Layer	Technology
 Frontend	React, Tailwind CSS
-Backend	Python (Flask or Django)
+Backend	Python (Flask)
 Database	MongoDB
 Auth	JWT or Session-based
 Visualization	Chart.js / Recharts
